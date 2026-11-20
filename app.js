@@ -129,6 +129,17 @@
     }
   }
   function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+
+  /* ---------- лес слегка следует за курсором (только мышь) ---------- */
+  var heroEl = document.querySelector('.hero'), forest = document.querySelector('.hero__bg img');
+  if (heroEl && forest && !reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    heroEl.addEventListener('pointermove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      var dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+      forest.style.translate = (-dx * 22).toFixed(1) + 'px ' + (-dy * 12).toFixed(1) + 'px';
+    });
+    heroEl.addEventListener('pointerleave', function () { forest.style.translate = '0 0'; });
+  }
   addEventListener('scroll', req, { passive: true });
   addEventListener('resize', req);
   frame();
