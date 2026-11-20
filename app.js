@@ -136,7 +136,7 @@
     heroEl.addEventListener('pointermove', function (e) {
       var r = heroEl.getBoundingClientRect();
       var dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
-      forest.style.translate = (-dx * 22).toFixed(1) + 'px ' + (-dy * 12).toFixed(1) + 'px';
+      forest.style.translate = (-dx * 9).toFixed(1) + 'px ' + (-dy * 5).toFixed(1) + 'px';
     });
     heroEl.addEventListener('pointerleave', function () { forest.style.translate = '0 0'; });
   }
