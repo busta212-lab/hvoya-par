@@ -15,8 +15,6 @@
   --on-deep-2:rgba(233,235,227,.64);
   --on-deep-line:rgba(233,235,227,.16);
   --accent:#9A6B45;      /* дерево — только в мелочах */
-  --cta:#93653F;
-  --cta-h:#7A5234;
   --photo:#D5DAD1;       /* заглушка под фото */
   --shadow:0 30px 60px -34px rgba(12,18,14,.38);
 
@@ -93,13 +91,17 @@ em{font-style:italic}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 30px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;border:1px solid currentColor;background:transparent;transition:background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease);white-space:nowrap}
 .btn:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .btn{border-radius:6px}
-/* главные кнопки брони: тёплое дерево + стрелка, которая время от времени «подталкивает» */
-.btn--cta{background:var(--cta);border-color:var(--cta);color:#FBF7F1;box-shadow:0 10px 24px -14px rgba(122,82,54,.9)}
-.btn--cta:hover{background:var(--cta-h);border-color:var(--cta-h);color:#FBF7F1}
+/* главные кнопки брони: прежние цвета + спокойная анимация-подсказка (линия по низу и толчок стрелки) */
+.btn--cta{position:relative;overflow:hidden;background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.btn--cta:hover{background:transparent;color:var(--fg)}
+.btn--cta::after{content:"";position:absolute;left:18%;right:18%;bottom:9px;height:1px;background:currentColor;opacity:.55;transform:scaleX(0);transform-origin:left;animation:underline 4.5s var(--ease) infinite}
+@keyframes underline{0%,62%{transform:scaleX(0);transform-origin:left}76%{transform:scaleX(1);transform-origin:left}77%{transform:scaleX(1);transform-origin:right}92%,100%{transform:scaleX(0);transform-origin:right}}
 .btn--cta .arr{animation:nudge 4.5s var(--ease) infinite}
-@keyframes nudge{0%,78%,100%{transform:none}86%{transform:translateX(6px)}92%{transform:translateX(-1px)}}
-.hdr .btn--cta,.hdr:not(.is-solid) .btn--cta:hover{background:var(--cta);border-color:var(--cta);color:#FBF7F1}
-.hdr .btn--cta:hover{background:var(--cta-h);border-color:var(--cta-h)}
+@keyframes nudge{0%,70%,100%{transform:none}80%{transform:translateX(6px)}88%{transform:translateX(-1px)}}
+.on-deep .btn--cta,.mnav .btn--cta{background:var(--on-deep);border-color:var(--on-deep);color:var(--deep)}
+.hdr .btn--cta{background:transparent;border-color:currentColor;color:inherit}
+.hdr .btn--cta:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.hdr:not(.is-solid) .btn--cta:hover{background:#F1F2EC;color:#18221C;border-color:#F1F2EC}
 .btn--solid{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .btn--solid:hover{background:transparent;color:var(--fg)}
 .on-deep .btn:hover{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep)}
@@ -472,3 +474,22 @@ em{font-style:italic}
 .note{border-radius:8px}
 .gal-row .link,.mnav__houses a{border-radius:6px}
 .lb__strip button,.gal button{border-radius:4px}
+/* планшет: три колонки сохраняем, подпись под фото; фото в блоках особенностей не шире 560px */
+@media (min-width:601px) and (max-width:900px){
+  .day{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .day__i:nth-child(n){margin:0}
+  .day__i:nth-child(2){margin-top:56px}
+  .day__i:nth-child(3){margin-top:28px}
+  .day__t{flex-direction:column;gap:6px}
+  .day__t b{min-width:0}
+  .feat__img{max-width:560px}
+  .feat--rev .feat__img{margin-left:auto}
+}
+/* телефон: фото дня — не на весь экран, а «лесенкой» */
+@media (max-width:600px){
+  .day{gap:40px}
+  .day__i:nth-child(1){margin-right:14%}
+  .day__i:nth-child(2){margin-left:14%}
+  .day__i:nth-child(3){margin-right:14%}
+  .day__t{flex-direction:column;gap:4px}
+}
