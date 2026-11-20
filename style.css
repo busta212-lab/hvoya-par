@@ -181,7 +181,7 @@ em{font-style:italic}
 
 /* =========================== ГЛАВНАЯ =========================== */
 /* первый экран: фото + заголовок + бронь всегда помещаются в высоту окна */
-.hero{position:relative;height:100vh;height:100svh;min-height:520px;max-height:1200px;overflow:hidden;color:#F1F2EC;background:#18221C;display:flex;flex-direction:column;padding-top:calc(var(--hdr) + env(safe-area-inset-top,0px))}
+.hero{position:relative;height:100vh;height:100svh;min-height:520px;overflow:hidden;color:#F1F2EC;background:#18221C;display:flex;flex-direction:column;padding-top:calc(var(--hdr) + env(safe-area-inset-top,0px))}
 .hero__bg{position:absolute;inset:0;will-change:transform}
 /* лес: меньше молочного тумана, план дальше, медленно «дышит» и смещается */
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;filter:contrast(1.34) brightness(.76) saturate(.95);animation:forest 36s ease-in-out infinite alternate;transition:translate 1.6s var(--ease)}
@@ -485,11 +485,13 @@ em{font-style:italic}
   .feat__img{max-width:560px}
   .feat--rev .feat__img{margin-left:auto}
 }
-/* телефон: фото дня — не на весь экран, а «лесенкой» */
+/* телефон: всё по одной линии, без «лесенки» */
 @media (max-width:600px){
-  .day{gap:40px}
-  .day__i:nth-child(1){margin-right:14%}
-  .day__i:nth-child(2){margin-left:14%}
-  .day__i:nth-child(3){margin-right:14%}
-  .day__t{flex-direction:column;gap:4px}
+  .day{grid-template-columns:1fr;gap:44px}
+  .day__i:nth-child(n){margin:0}
+  .day__i .ph{aspect-ratio:4/5}
+  .day__t{flex-direction:column;gap:4px;margin-top:16px}
+  .day__t b{min-width:0}
+  .about__grid{gap:12px}
+  .about__a,.about__b{aspect-ratio:3/4;margin-top:0}
 }
