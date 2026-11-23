@@ -542,3 +542,41 @@ em{font-style:italic}
 .combo__calc .n{white-space:nowrap}
 .dock__p b{white-space:nowrap}
 @media (max-width:420px){.dock__p b{font-size:19px}.dock .btn{padding:0 16px}.dock__call{width:44px;height:44px}}
+/* новогодний коллаж: высокий вечерний фасад + интерьер с камином + ночной кадр */
+.ny__grid{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:10px;aspect-ratio:4/4.4}
+.ny__grid .ph{border-radius:10px;min-height:0}
+.ny__grid .ph img{height:100%}
+.ny__a{grid-row:1/3}
+.ny__b img{object-position:50% 40%}
+.ny__c img{object-position:40% 50%}
+@media (max-width:900px){.ny__img{max-width:none}.ny__grid{aspect-ratio:4/3.6}}
+@media (max-width:600px){.ny__grid{gap:8px;aspect-ratio:1/1.05}}
+
+/* ===== Новый год: «зимняя ночь» — минимализм, снег, контурная 2027, акцент цвета шампанского ===== */
+.ny{--gold:#D4BF8E;--gold-2:rgba(212,191,142,.42);position:relative;overflow:hidden;isolation:isolate;
+  background:radial-gradient(120% 90% at 85% 0%,#1E2B24 0%,#121B16 45%,#0B110E 100%);color:var(--on-deep);border-top:0}
+.ny::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-2) 30%,var(--gold) 50%,var(--gold-2) 70%,transparent)}
+.ny::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-2),transparent)}
+.ny__snow{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.ny__year{position:absolute;right:-.04em;top:.06em;z-index:-1;font-family:var(--serif);font-weight:300;font-size:clamp(150px,24vw,380px);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(212,191,142,.22);user-select:none;pointer-events:none}
+.ny .eyebrow.ny__eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold)}
+.ny__eyebrow i{font-style:normal;font-size:9px;opacity:.8}
+.ny h2 em,.ny .h-l{color:#F3EEE2}
+.ny .body{color:rgba(237,235,227,.74)}
+.ny .body em{color:rgba(237,235,227,.86)}
+.ny .small{color:rgba(237,235,227,.6)}
+.ny__cols{border-top-color:var(--on-deep-line)}
+.ny__cols h4{color:var(--gold)}
+.ny__cols .list{color:rgba(237,235,227,.8)}
+.ny .list li::before{background:var(--gold)}
+.ny .rate{border-top-color:var(--on-deep-line)}
+.ny .rate dt{color:var(--gold)}
+.ny .rate dd{color:rgba(237,235,227,.74)}
+.ny .rate dd.v{color:var(--gold)}
+.ny__tel{color:var(--on-deep)}
+.ny__tel:hover{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep)}
+.ny__grid .ph{position:relative;background:#16201B;box-shadow:0 0 0 1px rgba(212,191,142,.14)}
+.ny__grid .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ny-pill i{color:#E8D7A8}
+@media (max-width:600px){.ny__year{top:auto;bottom:.02em;font-size:44vw}}
+.ny__grid{grid-template-rows:repeat(2,minmax(0,1fr))}.ny__grid>.ph{height:100%}

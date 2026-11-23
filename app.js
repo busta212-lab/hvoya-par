@@ -273,3 +273,33 @@
     stage.addEventListener('pointercancel', function () { g = null; });
   }
 })();
+
+/* ---------- Новый год: редкий медленный снег в блоке (только когда блок на экране) ---------- */
+(function () {
+  var c = document.querySelector('.ny__snow');
+  if (!c || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var ctx = c.getContext('2d'), flakes = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1), on = false, raf = 0;
+  function size() {
+    var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+    c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(110, W * H / 14000));
+    flakes = []; for (var i = 0; i < n; i++) flakes.push(make(true));
+  }
+  function make(any) {
+    var z = Math.random();
+    return { x: Math.random() * W, y: any ? Math.random() * H : -6, r: .6 + z * 1.6, v: .18 + z * .45, s: Math.random() * 6.28, a: .25 + z * .5 };
+  }
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < flakes.length; i++) {
+      var f = flakes[i]; f.y += f.v; f.s += .008; f.x += Math.sin(f.s) * .25;
+      if (f.y > H + 6) flakes[i] = make(false);
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fillStyle = 'rgba(241,238,228,' + f.a + ')'; ctx.fill();
+    }
+    if (on) raf = requestAnimationFrame(tick);
+  }
+  size(); addEventListener('resize', size);
+  new IntersectionObserver(function (es) {
+    on = es[0].isIntersecting; cancelAnimationFrame(raf); if (on) raf = requestAnimationFrame(tick);
+  }).observe(c.parentElement);
+})();
