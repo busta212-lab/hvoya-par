@@ -603,3 +603,4 @@ em{font-style:italic}
   .gal{grid-template-columns:minmax(0,1.62fr) repeat(2,minmax(0,1fr));height:auto;aspect-ratio:1.36}
   .gal button{border-radius:6px}
 }
+
