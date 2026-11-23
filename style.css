@@ -580,3 +580,21 @@ em{font-style:italic}
 .ny-pill i{color:#E8D7A8}
 @media (max-width:600px){.ny__year{top:auto;bottom:.02em;font-size:44vw}}
 .ny__grid{grid-template-rows:repeat(2,minmax(0,1fr))}.ny__grid>.ph{height:100%}
+.ny__grid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}.ny__a{grid-column:1;grid-row:1/3}.ny__b{grid-column:2;grid-row:1}.ny__c{grid-column:2;grid-row:2}.ny__grid>.ph{width:100%}
+/* новогодняя лента: главный кадр + листание вправо-влево */
+.ns__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:10px;box-shadow:0 0 0 1px rgba(212,191,142,.16);cursor:grab;overscroll-behavior-x:contain}
+.ns__track::-webkit-scrollbar{display:none}
+.ns__track.drag{cursor:grabbing;scroll-snap-type:none}
+.ns__track:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+.ns__s{flex:0 0 100%;margin:0;position:relative;aspect-ratio:4/5;scroll-snap-align:start;background:#16201B;user-select:none;-webkit-user-select:none}
+.ns__s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ns__ui{display:flex;align-items:center;gap:16px;margin-top:16px}
+.ns__count{font-family:var(--serif);font-size:18px;letter-spacing:.06em;color:var(--gold);min-width:48px;font-variant-numeric:tabular-nums}
+.ns__dots{flex:1;display:flex;gap:6px}
+.ns__dots i{flex:1;max-width:44px;height:1px;background:rgba(212,191,142,.3);transition:background .4s}
+.ns__dots i.on{background:var(--gold)}
+.ns__nav{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid rgba(212,191,142,.4);background:none;color:var(--on-deep);transition:background .4s,color .4s}
+.ns__nav:hover{background:var(--gold);color:#121B16;border-color:var(--gold)}
+.ns__nav .arr{width:16px}
+.ns__prev .arr{transform:scaleX(-1)}
+@media (max-width:900px){.ns__s{aspect-ratio:4/4.6}}

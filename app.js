@@ -303,3 +303,23 @@
     on = es[0].isIntersecting; cancelAnimationFrame(raf); if (on) raf = requestAnimationFrame(tick);
   }).observe(c.parentElement);
 })();
+
+/* ---------- лента фото (Новый год): стрелки, свайп, перетаскивание мышью ---------- */
+[].forEach.call(document.querySelectorAll('[data-slider]'), function (box) {
+  var track = box.querySelector('.ns__track'), slides = track.children, n = slides.length;
+  var count = box.querySelector('.ns__count'), dots = box.querySelector('.ns__dots');
+  var smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  dots.innerHTML = new Array(n + 1).join('<i></i>');
+  function idx() { return Math.round(track.scrollLeft / track.clientWidth); }
+  function upd() { var i = idx(); count.textContent = (i + 1) + ' / ' + n; [].forEach.call(dots.children, function (d, k) { d.classList.toggle('on', k === i); }); }
+  function go(i) { i = (i + n) % n; track.scrollTo({ left: i * track.clientWidth, behavior: smooth }); }
+  box.querySelector('.ns__next').onclick = function () { go(idx() + 1); };
+  box.querySelector('.ns__prev').onclick = function () { go(idx() - 1); };
+  track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(idx() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx() - 1); } });
+  track.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+  var down = false, sx = 0, sl = 0;
+  track.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; sx = e.clientX; sl = track.scrollLeft; track.classList.add('drag'); });
+  addEventListener('pointermove', function (e) { if (down) track.scrollLeft = sl - (e.clientX - sx); });
+  addEventListener('pointerup', function () { if (!down) return; down = false; track.classList.remove('drag'); go(Math.round(track.scrollLeft / track.clientWidth)); });
+  track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+});
