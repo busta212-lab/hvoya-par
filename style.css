@@ -495,3 +495,50 @@ em{font-style:italic}
   .about__grid{gap:12px}
   .about__a,.about__b{aspect-ratio:3/4;margin-top:0}
 }
+
+/* ===== правки от собственника: цены за ночь, «Комбо», Новый год, звонок ===== */
+.rate__note{margin-top:14px;font-size:13px;color:var(--fg-2)}
+.rate__note b{font-weight:600;color:var(--fg)}
+.combo{margin-top:22px;padding:16px 18px;border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;gap:6px}
+.combo p{font-size:14px;color:var(--fg-2);line-height:1.5}
+.combo b{font-weight:600;color:var(--fg)}
+.combo__calc{font-variant-numeric:tabular-nums}
+.combo__calc s{color:var(--mute)}
+
+/* строка «Открыта бронь на Новый год» на первом экране */
+.ny-pill{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(14px,2.6vh,28px);padding:9px 16px 9px 13px;border:1px solid rgba(241,242,236,.38);border-radius:999px;background:rgba(14,20,16,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:12px;font-weight:500;letter-spacing:.06em;color:#F1F2EC;transition:background .4s,border-color .4s}
+.ny-pill i{font-style:normal;font-size:14px;line-height:1}
+.ny-pill .arr{width:18px;animation:nudge 4.5s var(--ease) infinite}
+.ny-pill:hover{background:rgba(241,242,236,.14);border-color:rgba(241,242,236,.7)}
+
+/* блок Новый год */
+.ny__in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px clamp(32px,6vw,110px);align-items:start}
+.ny__img{position:sticky;top:calc(var(--hdr) + 32px)}
+.ny__img .ph{aspect-ratio:4/5;border-radius:10px}
+.ny__txt{display:flex;flex-direction:column;gap:22px;min-width:0}
+.ny__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 36px;padding-top:22px;border-top:1px solid var(--line)}
+.ny__cols h4,.ny h4{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin:0 0 10px}
+.ny__cols .list{font-size:14px;color:var(--fg-2)}
+.ny__prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.ny__btns{display:flex;flex-wrap:wrap;gap:12px}
+.ny__btns .btn svg,.foot__call svg,.aside__call svg,.mnav__call svg{flex:none}
+@media (max-width:900px){.ny__in{grid-template-columns:1fr}.ny__img{position:static;max-width:560px}}
+@media (max-width:600px){.ny__cols,.ny__prices{grid-template-columns:1fr}.ny__btns .btn{flex:1 1 100%}}
+
+/* звонок */
+.hdr__call{display:none;place-items:center;width:44px;height:44px;border:1px solid currentColor;border-radius:50%;opacity:.9}
+@media (max-width:720px){.hdr__call{display:grid}.hdr__r{gap:10px}}
+.foot__call{color:var(--on-deep);margin:-48px 0 clamp(48px,6vw,88px)}
+.foot__call:hover{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep)}
+.mnav__call{color:var(--on-deep);gap:10px}
+.aside__call{width:100%;margin-top:10px;gap:10px}
+.aside__ny{display:flex;flex-direction:column;gap:4px;margin-top:22px;padding:16px 18px;border-radius:8px;background:var(--bg-2);transition:background .3s}
+.aside__ny b{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1}
+.aside__ny span:last-child{font-size:13px;color:var(--fg-2)}
+.aside__ny:hover{background:color-mix(in srgb,var(--bg-2) 80%,var(--fg) 6%)}
+.dock__btns{display:flex;align-items:center;gap:10px}
+.dock__call{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line-strong);border-radius:50%;color:var(--fg)}
+.combo b,.combo s,.combo__calc{white-space:nowrap}.combo__calc{white-space:normal}.combo__calc b,.combo__calc s{white-space:nowrap}
+.combo__calc .n{white-space:nowrap}
+.dock__p b{white-space:nowrap}
+@media (max-width:420px){.dock__p b{font-size:19px}.dock .btn{padding:0 16px}.dock__call{width:44px;height:44px}}
