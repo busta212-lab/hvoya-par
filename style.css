@@ -598,3 +598,8 @@ em{font-style:italic}
 .ns__nav .arr{width:16px}
 .ns__prev .arr{transform:scaleX(-1)}
 @media (max-width:900px){.ns__s{aspect-ratio:4/4.6}}
+/* галерея дома под вертикальные фото: большая плитка ≈ 3:5, маленькие ≈ 3:4 — почти без обрезки */
+@media (min-width:761px){
+  .gal{grid-template-columns:minmax(0,1.62fr) repeat(2,minmax(0,1fr));height:auto;aspect-ratio:1.36}
+  .gal button{border-radius:6px}
+}
