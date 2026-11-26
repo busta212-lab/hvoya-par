@@ -637,7 +637,7 @@ em{font-style:italic}
 @media (max-width:600px){.doc__tbl{grid-template-columns:1fr}.doc__tbl dt{border-bottom:0;padding-bottom:2px}}
 
 /* =========================== КНОПКА MAX =========================== */
-.fab-max{--mx1:#4F7BFF;--mx2:#8E4BFF;position:fixed;right:max(18px,env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;align-items:center;gap:0;height:60px;padding:0;border-radius:999px;color:#fff;background:linear-gradient(135deg,var(--mx1),var(--mx2));box-shadow:0 10px 30px -8px rgba(80,70,220,.55),0 2px 6px rgba(0,0,0,.18);transition:bottom .45s cubic-bezier(.2,.7,.2,1),transform .3s,box-shadow .3s;-webkit-tap-highlight-color:transparent}
+.fab-max{--mx1:#4F7BFF;--mx2:#8E4BFF;position:fixed;right:max(18px,env(safe-area-inset-right));bottom:calc(64px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;align-items:center;gap:0;height:60px;padding:0;border-radius:999px;color:#fff;background:linear-gradient(135deg,var(--mx1),var(--mx2));box-shadow:0 10px 30px -8px rgba(80,70,220,.55),0 2px 6px rgba(0,0,0,.18);transition:bottom .45s cubic-bezier(.2,.7,.2,1),transform .3s,box-shadow .3s;-webkit-tap-highlight-color:transparent}
 .fab-max__i{position:relative;display:grid;place-items:center;width:60px;height:60px;flex:0 0 60px;border-radius:50%}
 .fab-max__i::before,.fab-max__i::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--mx1);opacity:0;animation:fabPulse 2.8s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
 .fab-max__i::after{animation-delay:1.4s;border-color:var(--mx2)}
@@ -649,7 +649,7 @@ em{font-style:italic}
 @keyframes fabPulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.75);opacity:0}}
 @keyframes fabNudge{0%,84%,100%{transform:rotate(0)}87%{transform:rotate(-12deg)}90%{transform:rotate(10deg)}93%{transform:rotate(-6deg)}96%{transform:rotate(3deg)}}
 @media (max-width:860px){.fab-max{height:54px;right:max(14px,env(safe-area-inset-right))}.fab-max__i{width:54px;height:54px;flex-basis:54px}
-  .dock-on .fab-max{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
+  .dock-on .fab-max{bottom:calc(112px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.fab-max__i::before,.fab-max__i::after,.fab-max__i svg{animation:none}}
 .menu-open .fab-max{opacity:0;pointer-events:none}
 @media print{.fab-max{display:none}}
