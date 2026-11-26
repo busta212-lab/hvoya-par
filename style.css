@@ -653,3 +653,14 @@ em{font-style:italic}
 @media (prefers-reduced-motion:reduce){.fab-max__i::before,.fab-max__i::after,.fab-max__i svg{animation:none}}
 .menu-open .fab-max{opacity:0;pointer-events:none}
 @media print{.fab-max{display:none}}
+
+/* =========================== КАРТОЧКА ДОМА (v2: номер, параметры, отличия) =========================== */
+.card__head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:22px 0 0}
+.card h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.3vw,36px);line-height:1;letter-spacing:-.01em;margin:0;min-height:0}
+.card__price{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.5vw,23px);white-space:nowrap;font-variant-numeric:lining-nums}
+.card__price small{font-family:var(--sans,inherit);font-size:11px;letter-spacing:.04em;color:var(--on-deep-2)}
+.card__spec{margin-top:10px;padding-bottom:14px;border-bottom:1px solid var(--on-deep-line);font-size:12px;letter-spacing:.06em;color:var(--on-deep-2);font-variant-numeric:lining-nums}
+.card__tags{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.card__tags li{font-size:11px;letter-spacing:.05em;padding:6px 11px;border:1px solid var(--on-deep-line);border-radius:999px;color:var(--on-deep);white-space:nowrap}
+.card .link{margin-top:auto;padding-top:22px;align-self:flex-start}
+@media (min-width:861px){.track-ui{padding-right:calc(var(--gr) + 76px)}}
