@@ -709,3 +709,44 @@ a.soon:hover span{text-decoration:underline;text-underline-offset:3px}
 .foot__map-btn{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:6px;background:rgba(24,34,28,.86);color:#F1F2EC;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;backdrop-filter:blur(6px)}
 .foot__map-btn .arr{width:16px}
 @media (max-width:900px){.foot__map{aspect-ratio:650/420}}
+
+/* =========================== НОВЫЙ ГОД: выбор периода =========================== */
+.ny__picks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.ny__picks .eyebrow{grid-column:1/-1;color:var(--gold,#D4BF8E)}
+.ny__pick{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px 48px 18px 20px;border:1px solid color-mix(in srgb,var(--gold,#D4BF8E) 55%,transparent);border-radius:8px;color:var(--on-deep);background:color-mix(in srgb,var(--gold,#D4BF8E) 6%,transparent);transition:background .35s,border-color .35s,transform .35s}
+.ny__pick b{font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.8vw,26px);line-height:1.1}
+.ny__pick span{font-size:12px;letter-spacing:.04em;color:var(--on-deep-2)}
+.ny__pick .arr{position:absolute;right:18px;top:50%;width:18px;transform:translateY(-50%);transition:transform .35s}
+.ny__pick:hover{background:color-mix(in srgb,var(--gold,#D4BF8E) 14%,transparent);border-color:var(--gold,#D4BF8E)}
+.ny__pick:hover .arr{transform:translate(4px,-50%)}
+.ny__picks + .ny__btns{margin-top:12px}
+@media (max-width:600px){.ny__picks{grid-template-columns:1fr}}
+
+/* =========================== БАНЯ v2: фото-листалка слева, описание справа =========================== */
+.banya__in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:center}
+.banya__media .ns__s{aspect-ratio:4/5;max-height:calc(100svh - var(--hdr,72px) - 120px);aspect-ratio:auto;height:min(calc(100svh - var(--hdr,72px) - 120px),760px)}
+.ns--light .ns__track{box-shadow:0 0 0 1px var(--line)}
+.ns--light .ns__s{background:var(--bg-2)}
+.ns--light .ns__count{color:var(--fg)}
+.ns--light .ns__dots i{background:var(--line-strong,rgba(27,35,30,.25))}
+.ns--light .ns__dots i.on{background:var(--fg)}
+.ns--light .ns__nav{border-color:var(--line-strong,rgba(27,35,30,.3));color:var(--fg)}
+.ns--light .ns__nav:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.ns--light .ns__track:focus-visible{outline-color:var(--fg)}
+.banya__txt .h-l{margin:14px 0 18px}
+.banya__txt > .body{max-width:46ch}
+.banya__txt .banya__facts{grid-template-columns:repeat(3,minmax(0,1fr));margin:28px 0 0;padding-top:22px;border-top:1px solid var(--line)}
+.banya__txt .banya__incl{margin-top:24px}
+.banya__txt .banya__btns{flex-direction:row;flex-wrap:wrap;min-width:0;margin-top:8px}
+@media (max-width:1100px){.banya__txt .banya__facts{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.banya__in{grid-template-columns:1fr}.banya__media .ns__s{height:auto;aspect-ratio:4/4.6;max-height:none}.banya__txt .banya__btns{flex-direction:column}.banya__txt .banya__btns .btn{justify-content:center}}
+.ns--light .ns__dots i{background:var(--line)}
+.ns--light .ns__nav{border-color:var(--line)}
+.banya.sec{padding-block:clamp(56px,7vw,110px)}
+.banya__media .ns__s{height:clamp(360px,calc(100svh - 300px),700px)}
+.banya__txt .banya__btns .btn{flex:1 1 220px;justify-content:center}
+.banya__txt .banya__facts{margin-top:22px}
+.banya__txt .banya__incl{margin-top:18px}
+.banya__txt .banya__incl p{margin-bottom:12px}
+@media (max-width:900px){.banya__media .ns__s{height:auto}}
+.banya__btns .btn svg,.foot__btns .btn svg{flex:none}
