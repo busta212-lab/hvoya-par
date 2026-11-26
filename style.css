@@ -664,3 +664,4 @@ em{font-style:italic}
 .card__tags li{font-size:11px;letter-spacing:.05em;padding:6px 11px;border:1px solid var(--on-deep-line);border-radius:999px;color:var(--on-deep);white-space:nowrap}
 .card .link{margin-top:auto;padding-top:22px;align-self:flex-start}
 @media (min-width:861px){.track-ui{padding-right:calc(var(--gr) + 76px)}}
+.card__tags li.no{border-style:dashed;color:var(--on-deep-2)}
