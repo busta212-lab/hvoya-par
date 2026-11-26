@@ -35,7 +35,7 @@
 
   /* ---------- общий помощник: изолировать фон под слоем ---------- */
   function setInert(on, except) {
-    [].forEach.call(document.querySelectorAll('main, footer, .dock, .hdr'), function (el) {
+    [].forEach.call(document.querySelectorAll('main, footer, .dock, .hdr, .fab-max'), function (el) {
       if (el !== except) el.inert = on;
     });
   }
@@ -48,7 +48,7 @@
     doc.classList.toggle('menu-open', open);
     if (burger) burger.setAttribute('aria-expanded', String(open));
     if (hdr) hdr.classList.remove('is-hidden');
-    [].forEach.call(document.querySelectorAll('main, footer, .dock'), function (el) { el.inert = open; });
+    [].forEach.call(document.querySelectorAll('main, footer, .dock, .fab-max'), function (el) { el.inert = open; });
     if (mnav) { mnav.inert = !open; mnav.setAttribute('aria-hidden', String(!open)); }
     if (open) { var a = mnav && mnav.querySelector('a'); if (a) setTimeout(function () { a.focus({ preventScroll: true }); }, 60); }
     else if (!keepFocus && burger && getComputedStyle(burger).display !== 'none') burger.focus();
@@ -115,6 +115,7 @@
     if (dock) {
       var vis = mobile.matches && dockT && !nearEnd && !open;
       dock.classList.toggle('is-on', vis);
+      doc.classList.toggle('dock-on', vis);
       dock.inert = !vis;
       dock.setAttribute('aria-hidden', String(!vis));
     }
