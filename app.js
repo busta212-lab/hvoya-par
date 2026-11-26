@@ -204,7 +204,34 @@
       dout.min = iso(next);
       if (!dout.value || dout.value < dout.min) dout.value = dout.min;
     });
+    /* «Показать наличие» → страница брони с датами и гостями (модуль Bnovo ждёт ДД-ММ-ГГГГ) */
+    var go = document.getElementById('book-go');
+    if (go) {
+      var dmy = function (v) { var p = v.split('-'); return p[2] + '-' + p[1] + '-' + p[0]; };
+      var toBook = function (ev) {
+        ev.preventDefault();
+        var q = [], g = document.getElementById('guests');
+        if (din.value) q.push('dfrom=' + dmy(din.value));
+        if (dout.value) q.push('dto=' + dmy(dout.value));
+        if (g && g.value) q.push('adults=' + encodeURIComponent(g.value));
+        if (window.ym && window.YM_ID) window.ym(window.YM_ID, 'reachGoal', 'search_dates');
+        location.href = go.getAttribute('href') + (q.length ? '?' + q.join('&') : '');
+      };
+      go.addEventListener('click', toBook);
+      if (go.form || go.closest('form')) (go.form || go.closest('form')).addEventListener('submit', toBook);
+    }
   }
+
+  /* ---------- цели Яндекс Метрики: звонок, переход в бронь, Max ---------- */
+  document.addEventListener('click', function (ev) {
+    if (!window.ym || !window.YM_ID) return;
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a || a.id === 'book-go') return;
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('tel:') === 0) window.ym(window.YM_ID, 'reachGoal', 'call_click');
+    else if (/(^|\/)booking(\?|#|$)/.test(h)) window.ym(window.YM_ID, 'reachGoal', 'booking_click');
+    else if (h.indexOf('max.ru') > -1) window.ym(window.YM_ID, 'reachGoal', 'max_click');
+  }, true);
 
   /* ---------- галерея и лайтбокс ---------- */
   var lb = document.querySelector('.lb');
